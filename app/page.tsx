@@ -1,21 +1,4 @@
-import { Card, Footer, Header } from "./components";
-
-export default function Home() {
-  return (
-    <>
-      <Header />
-      <main className="flex-1">
-        <Card
-          country={countris[0].country}
-          capital={countris[0].capital}
-          region={countris[0].region}
-          population={countris[0].population}
-        />
-      </main>
-      <Footer />
-    </>
-  );
-}
+import { Card, Footer, Grid, Header } from "./components";
 
 const countris = [
   {
@@ -79,3 +62,25 @@ const countris = [
     population: "60000000",
   },
 ];
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main className="flex-1">
+        <Grid>
+          {countris.map(({ country, capital, region, population }) => (
+            <Card
+              key={country}
+              country={country}
+              capital={capital}
+              region={region}
+              population={population}
+            />
+          ))}
+        </Grid>
+      </main>
+      <Footer />
+    </>
+  );
+}
