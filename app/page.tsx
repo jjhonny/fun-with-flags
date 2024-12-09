@@ -10,7 +10,7 @@ type Country = {
   name: {
     common: string;
   };
-  capital: string;
+  capital: string[];
   region: string;
   population: number;
 };
@@ -24,9 +24,8 @@ export default function Home() {
     const fetchCountries = async () => {
       try {
         setLoading(true);
-
         const response = await fetch(
-          "https://restcountries.com/v3.1/all?fields=cca3,flags,name,region,population"
+          "https://restcountries.com/v3.1/all?fields=cca3,flags,name,capital,region,population"
         );
         const data = await response.json();
         setCountries(data);
